@@ -88,7 +88,7 @@ func GetOpenSeaSlug(query string) (string, error) {
 
 	body, _ := ioutil.ReadAll(res.Body)
 
-	println(fmt.Sprintf("%s", body))
+	// println(fmt.Sprintf("%s", body))
 
 	b := Nftstat{}
 
@@ -104,7 +104,7 @@ func GetOpenSeaSlug(query string) (string, error) {
 
 func Search(query string) (string, error) {
 	slug, err := GetOpenSeaSlug(query)
-	println(slug)
+	// println(slug)
 
 	if err != nil {
 		return "", err

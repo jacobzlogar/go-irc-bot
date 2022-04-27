@@ -3,10 +3,12 @@ package main
 import (
 	"bot/news"
 	"bot/nft"
+	"bot/stocks"
 	"fmt"
 )
 
 func main() {
+	test_stocks()
 	test_news()
 	test_nft()
 }
@@ -29,6 +31,13 @@ func test_news() {
 	}
 }
 
+func test_stocks() {
+	res, err := stocks.Search("AAPL")
+	if err != nil {
+		fmt.Printf("error %s", err)
+	}
+	println(res)
+}
 
 func test_nft() {
 	res, err := nft.Search("moonbirds")

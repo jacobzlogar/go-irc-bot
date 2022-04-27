@@ -54,7 +54,7 @@ func Search(query string) (News, error) {
 
 	res, err := http.DefaultClient.Do(req)
 
-	println(res)
+	// println(res)
 
 	if err != nil {
 		return news, err

@@ -1,12 +1,13 @@
 package main
 
 import (
+	"bot/irc"
+	"bot/news"
+	"bot/nft"
+	"bot/stocks"
+	"bot/openai"
 	"fmt"
 	"os"
-	"bot/irc"
-	"bot/nft"
-	"bot/news"
-	// "bot/stocks"
 	"strings"
 )
 
@@ -21,7 +22,8 @@ func handler(i *irc.IRC, m irc.Message) {
 	if strings.Contains(arg, "!floor") {
 		floor, err := nft.Search(q)
 		if err != nil {
-			panic(err)
+			fmt.Sprintf("%s", err)
+			// panic(err)
 		}
 		i.Say(m.Target, floor)
 	}
@@ -30,7 +32,7 @@ func handler(i *irc.IRC, m irc.Message) {
 
 		n, err := news.Search(query)
 		if err != nil {
-			panic(err)
+			fmt.Sprintf("%s", err)
 		}
 
 		if len(n.Articles) > 0 {
@@ -39,11 +41,22 @@ func handler(i *irc.IRC, m irc.Message) {
 			}
 		}
 	}
-	// if strings.Contains(s, "!s") {
-	// 	if err := i.Say(m.Target, stocks.Search(args[x+1])); err != nil {
-	// 		println(x)
-	// 	}
-	// }
+
+	if strings.Contains(arg, "!s") {
+		stock, err := stocks.Search(q)
+		if err != nil {
+			fmt.Sprint("%s", err)
+		}
+		i.Say(m.Target, stock)
+	}
+
+	if strings.Contains(arg, "!tldr") {
+		summary, err := openai.Summarize(q)
+		if err != nil {
+			fmt.Sprint("%s", err)
+		}
+		i.Say(m.Target, summary)
+	}
 }
 func main() {
 	i := irc.New(&irc.Options{

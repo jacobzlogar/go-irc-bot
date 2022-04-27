@@ -57,6 +57,10 @@ func Search(query string) (string, error){
 
 	json.Unmarshal([]byte(body), &stock)
 
+	if stock.Status == "NOT_FOUND" {
+		return "Not found", nil
+	}
+
 	println(fmt.Sprint("%s", stock))
 
 	open := stock.Open

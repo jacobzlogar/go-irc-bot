@@ -1,12 +1,13 @@
 package stocks
 
 import (
-	"os"
-	"fmt"
-	"time"
-	"net/http"
-	"io/ioutil"
 	"encoding/json"
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"os"
+	"strings"
+	"time"
 )
 
 type Stock struct {
@@ -28,7 +29,7 @@ func Search(query string) (string, error){
 	date := time.Now().AddDate(0, 0, -1)
 
 	url := fmt.Sprintf("https://api.polygon.io/v1/open-close/%s/%s?adjusted=true&apiKey=%s",
-		query,
+		strings.ToUpper(query),
 		date.Format("2006-01-02"),
 		key,
 	)
@@ -68,7 +69,7 @@ func Search(query string) (string, error){
 	after := stock.AfterHours
 
 	msg := fmt.Sprintf("%s %s open: %v - close: %v - after hours: %v",
-		query,
+		strings.ToUpper(query),
 		date.Format("01-02-2006"),
 		open,
 		close,

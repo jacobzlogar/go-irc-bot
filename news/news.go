@@ -4,6 +4,7 @@ import (
 	"os"
 	"fmt"
 	"time"
+	"strconv"
 	"net/http"
 	"encoding/json"
 	"io/ioutil"
@@ -26,39 +27,44 @@ type News struct {
 	} `json:"articles"`
 }
 
-func Search(query string) News {
+func Search(query string) (News, error) {
 	token := os.Getenv("NEWSAPI_KEY")
 
 	to := time.Now()
 
 	from := time.Now().AddDate(0, 0, -1)
 
-	url := fmt.Sprintf("https://newsapi.org/v2/everything?q=%s&searchIn=title&from=%s&to=%s&apiKey=%s",
+	url := fmt.Sprintf("https://newsapi.org/v2/everything?q=%s&searchIn=title&from=%s&to=%s&pageSize=%s&apiKey=%s",
 		query,
 		from.Format("01-02-2006"),
 		to.Format("01-02-2006"),
+		strconv.Itoa(3),
 		token,
 	)
+
+	news := News{}
+
+	println(url)
 
 	req, err := http.NewRequest("GET", url, nil)
 
 	if err != nil {
-		panic(err)
+		return news, err
 	}
 
 	res, err := http.DefaultClient.Do(req)
 
+	println(res)
+
 	if err != nil {
-		panic(err)
+		return news, err
 	}
 
 	defer res.Body.Close()
 
 	body, _ := ioutil.ReadAll(res.Body)
 
-	news := News{}
-
 	json.Unmarshal([]byte(body), &news)
 
-	return news
+	return news, nil
 }

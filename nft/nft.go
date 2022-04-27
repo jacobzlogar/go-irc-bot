@@ -60,49 +60,62 @@ type Nftstat struct {
 	ProcessingTimeMs int    `json:"processingTimeMs"`
 }
 
-func GetOpenSeaSlug(query string) string {
+func GetOpenSeaSlug(query string) (string, error) {
 	request, err := json.Marshal(map[string]string{"q": query})
 
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
 	req, err := http.NewRequest("POST", "https://www.nft-stats.com/indexes/collections/search", bytes.NewBuffer(request))
 
 	if err != nil {
-		panic(err)
+		return "", err
 	}
+	println(os.Getenv("NFTSTAT_KEY"))
 
 	req.Header.Set("content-type", "application/json")
 
-	req.Header.Set("authorization", fmt.Sprintf("Bearer %s", os.Getenv("NFTSTAT_KEY")))
+	req.Header.Set("authorization", fmt.Sprintf("Bearer %s", os.Getenv("NFTSTATS_KEY")))
 
 	res, err := http.DefaultClient.Do(req)
 
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
 	defer res.Body.Close()
 
 	body, _ := ioutil.ReadAll(res.Body)
 
+	println(fmt.Sprintf("%s", body))
+
 	b := Nftstat{}
 
 	json.Unmarshal([]byte(body), &b)
 
-	return b.Hits[0].Slug
+	if len(b.Hits) > 1 {
+		hit := b.Hits[0]
+		return hit.Slug, err
+	}
+
+	return "", err
 }
 
-func Search(query string) string {
-	q := GetOpenSeaSlug(query)
+func Search(query string) (string, error) {
+	slug, err := GetOpenSeaSlug(query)
+	println(slug)
 
-	url := fmt.Sprintf("https://api.opensea.io/api/v1/collection/%s/stats", q)
+	if err != nil {
+		return "", err
+	}
+
+	url := fmt.Sprintf("https://api.opensea.io/api/v1/collection/%s/stats", slug)
 
 	req, err := http.NewRequest("GET", url, nil)
 
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
 	req.Header.Add("Accept", "application/json")
@@ -110,7 +123,7 @@ func Search(query string) string {
 	res, err := http.DefaultClient.Do(req)
 
 	if err != nil {
-		panic(err)
+		return "", err
 	}
 
 	defer res.Body.Close()
@@ -123,5 +136,7 @@ func Search(query string) string {
 
 	floor := b.Stats.FloorPrice
 
-	return fmt.Sprintf("floor of %s is at %s", query, strconv.FormatFloat(floor, 'f', 6, 64))
+	msg := fmt.Sprintf("floor of %s is at %s", query, strconv.FormatFloat(floor, 'f', 6, 64))
+
+	return msg, nil
 }

@@ -1,11 +1,39 @@
 package main
 
-import "testing"
+import (
+	"bot/news"
+	"bot/nft"
+	"fmt"
+)
 
 func main() {
-	news := news.Search("bitcoin")
-	for i := 0; i <= 2; i++ {
-		println(news.Articles[i].Title)
+	test_news()
+	test_nft()
+}
+
+func test_news() {
+	res, err := news.Search("bitcoin")
+	if err != nil {
+		fmt.Printf("error %s", err)
 	}
-	// println(news.Search("Bitcoin"))
+	for i := 0; i < len(res.Articles); i++ {
+		println(res.Articles[i].Title)
+	}
+
+	n, err := news.Search("")
+	if err != nil {
+		fmt.Printf("error %s", err)
+	}
+	for i := 0; i < len(n.Articles); i++ {
+		println(n.Articles[i].Title)
+	}
+}
+
+
+func test_nft() {
+	res, err := nft.Search("moonbirds")
+	if err != nil {
+		fmt.Printf("error %s", err)
+	}
+	println(res)
 }

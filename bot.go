@@ -1,8 +1,8 @@
 package main
 
 import (
-	"os"
 	"fmt"
+	"os"
 	"bot/irc"
 	"bot/nft"
 	"bot/news"
@@ -11,18 +11,32 @@ import (
 )
 
 func handler(i *irc.IRC, m irc.Message) {
+	var q string = ""
 	args := strings.Fields(m.RawArgs)
 	arg := args[0]
-	q := args[1]
+	if len(args) > 1 {
+		q = strings.Join(args[1:len(args)], " ")
+	}
+
 	if strings.Contains(arg, "!floor") {
-		if err := i.Say(m.Target, nft.Search(q)); err != nil {
-			println(q)
+		floor, err := nft.Search(q)
+		if err != nil {
+			panic(err)
 		}
+		i.Say(m.Target, floor)
 	}
 	if strings.Contains(arg, "!news") {
-		n := news.Search(q)
-		for x := 0; x < 3; x++ {
-			i.Say(m.Target, fmt.Sprintf("%s - %s", n.Articles[x].Title, n.Articles[x].URL))
+		query := strings.ReplaceAll(q, " ", "")
+
+		n, err := news.Search(query)
+		if err != nil {
+			panic(err)
+		}
+
+		if len(n.Articles) > 0 {
+			for x := 0; x < len(n.Articles); x++ {
+				i.Say(m.Target, fmt.Sprintf("%s - %s", n.Articles[x].Title, n.Articles[x].URL))
+			}
 		}
 	}
 	// if strings.Contains(s, "!s") {

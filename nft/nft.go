@@ -136,7 +136,7 @@ func Search(query string) (string, error) {
 
 	floor := b.Stats.FloorPrice
 
-	collection_url := fmt.Sprintf("https://opensea.com/collection/%s", slug)
+	collection_url := fmt.Sprintf("https://opensea.io/collection/%s", slug)
 
 	msg := fmt.Sprintf("%s floor: %s ⟠: %s",
 		query,

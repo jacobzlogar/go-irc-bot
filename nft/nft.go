@@ -138,7 +138,7 @@ func Search(query string) (string, error) {
 
 	collection_url := fmt.Sprintf("https://opensea.io/collection/%s", slug)
 
-	msg := fmt.Sprintf("%s floor: %s ⟠: %s",
+	msg := fmt.Sprintf("%s floor %s ⟠: %s",
 		query,
 		strconv.FormatFloat(floor, 'f', 2, 64),
 		collection_url,

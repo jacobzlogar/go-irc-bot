@@ -136,7 +136,7 @@ func Search(query string) (string, error) {
 
 	floor := b.Stats.FloorPrice
 
-	msg := fmt.Sprintf("floor of %s is at %s", query, strconv.FormatFloat(floor, 'f', 6, 64))
+	msg := fmt.Sprintf("%s floor: %s ⟠", query, strconv.FormatFloat(floor, 'f', 2, 64))
 
 	return msg, nil
 }

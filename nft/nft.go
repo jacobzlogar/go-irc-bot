@@ -136,7 +136,13 @@ func Search(query string) (string, error) {
 
 	floor := b.Stats.FloorPrice
 
-	msg := fmt.Sprintf("%s floor: %s ⟠", query, strconv.FormatFloat(floor, 'f', 2, 64))
+	collection_url := fmt.sprintf("https://opensea.com/collection/%s", %s)
+
+	msg := fmt.Sprintf("%s floor: %s ⟠",
+		query,
+		strconv.FormatFloat(floor, 'f', 2, 64),
+		collection_url,
+	)
 
 	return msg, nil
 }

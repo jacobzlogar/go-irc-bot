@@ -1,0 +1,104 @@
+{
+    "query": {
+        "search": [
+            {
+                "timestamp": "2022-04-28T13:36:10Z",
+                "snippet": "of advanced, intelligent extraterrestrial life. Different types of <span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">spheres</span> and their energy-harvesting ability would correspond to levels of technological",
+                "wordcount": 4371,
+                "size": 37936,
+                "pageid": 8586,
+                "title": "Dyson sphere",
+                "ns": 0
+            },
+            {
+                "timestamp": "2022-01-28T13:19:17Z",
+                "snippet": "included the construction of <span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">spheres</span> as part of its gameplay, and had thought about a game concept of building a <span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">sphere</span> piece by piece. When the",
+                "wordcount": 846,
+                "size": 8032,
+                "pageid": 66542086,
+                "title": "Dyson Sphere Program",
+                "ns": 0
+            },
+            {
+                "timestamp": "2022-03-13T03:51:12Z",
+                "snippet": "<span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">spheres</span> are theoretical constructs that harvest the entire energy output of a given star by completely enclosing it. They are named after physicist",
+                "wordcount": 342,
+                "size": 3958,
+                "pageid": 3617568,
+                "title": "Dyson spheres in popular culture",
+                "ns": 0
+            },
+            {
+                "timestamp": "2022-04-22T03:28:16Z",
+                "snippet": "known as a <span class=\"searchmatch\">Dyson</span> number <span class=\"searchmatch\">Dyson</span> operator <span class=\"searchmatch\">Dyson</span> series <span class=\"searchmatch\">Dyson</span> conjecture <span class=\"searchmatch\">Dyson</span> equation <span class=\"searchmatch\">Dyson</span> tree <span class=\"searchmatch\">Dyson</span>'s transform <span class=\"searchmatch\">Dyson</span>'s eternal intelligence <span class=\"searchmatch\">Dyson</span>–Maleev",
+                "wordcount": 8237,
+                "size": 81668,
+                "pageid": 11397,
+                "title": "Freeman Dyson",
+                "ns": 0
+            },
+            {
+                "timestamp": "2022-04-20T14:14:30Z",
+                "snippet": "several <span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">spheres</span> nested inside one another, the same way that matryoshka dolls are composed of multiple nested doll components. The innermost <span class=\"searchmatch\">Dyson</span> sphere",
+                "wordcount": 840,
+                "size": 9042,
+                "pageid": 709958,
+                "title": "Matrioshka brain",
+                "ns": 0
+            },
+            {
+                "timestamp": "2022-03-25T13:58:41Z",
+                "snippet": "<span class=\"searchmatch\">Dyson</span> may refer to: <span class=\"searchmatch\">Dyson</span> (surname), people with the surname <span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">Dyson</span>, a character in the Canadian television series Lost Girl. <span class=\"searchmatch\">Dyson</span> (company), home",
+                "wordcount": 183,
+                "size": 1128,
+                "pageid": 1490430,
+                "title": "Dyson",
+                "ns": 0
+            },
+            {
+                "timestamp": "2022-05-01T21:04:34Z",
+                "snippet": "There have been some attempts to find evidence of the existence of <span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">spheres</span> that would alter the spectra of their core stars. Direct observation",
+                "wordcount": 13473,
+                "size": 121595,
+                "pageid": 11579,
+                "title": "Fermi paradox",
+                "ns": 0
+            },
+            {
+                "timestamp": "2022-04-25T20:56:34Z",
+                "snippet": "solar energy. A Matrioshka brain is a collection of multiple Concentric <span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">Spheres</span> which make use of star's energy for computing. A Stellar engine either",
+                "wordcount": 3714,
+                "size": 28750,
+                "pageid": 1029423,
+                "title": "Megastructure",
+                "ns": 0
+            },
+            {
+                "timestamp": "2022-01-06T19:46:37Z",
+                "snippet": "megastructures. <span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">spheres</span> or <span class=\"searchmatch\">Dyson</span> swarm and similar constructs are hypothetical megastructures originally described by Freeman <span class=\"searchmatch\">Dyson</span> as a system of",
+                "wordcount": 915,
+                "size": 8076,
+                "pageid": 30643750,
+                "title": "Astronomical engineering",
+                "ns": 0
+            },
+            {
+                "timestamp": "2022-02-28T19:17:16Z",
+                "snippet": "source needed] Dvorsky gained some notoriety in 2012 after writing about <span class=\"searchmatch\">Dyson</span> <span class=\"searchmatch\">spheres</span>, hypothetical structures intended to collect the entire energetic output",
+                "wordcount": 1688,
+                "size": 15745,
+                "pageid": 829852,
+                "title": "George Dvorsky",
+                "ns": 0
+            }
+        ],
+        "searchinfo": {
+            "totalhits": 355
+        }
+    },
+    "continue": {
+        "continue": "-||",
+        "sroffset": 10
+    },
+    "batchcomplete": ""
+}

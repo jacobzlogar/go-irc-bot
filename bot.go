@@ -12,6 +12,7 @@ import (
 )
 
 func handler(i *irc.IRC, m irc.Message) {
+	//FIXME: if theres no input, bot crashes
 	var q string = ""
 	args := strings.Fields(m.RawArgs)
 	arg := args[0]
@@ -31,9 +32,9 @@ func handler(i *irc.IRC, m irc.Message) {
 		}
 	}
 	if strings.Contains(arg, "!news") {
-		query := strings.ReplaceAll(q, " ", "")
+		// query := strings.ReplaceAll(q, " ", "")
 
-		n, err := news.Search(query)
+		n, err := news.Search(q)
 		if err != nil {
 			fmt.Sprintf("%s", err)
 		}

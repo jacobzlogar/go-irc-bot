@@ -28,13 +28,14 @@ type News struct {
 }
 
 func Search(query string) (News, error) {
+	print(query)
 	token := os.Getenv("NEWSAPI_KEY")
 
 	to := time.Now()
 
 	from := time.Now().AddDate(0, 0, -1)
 
-	url := fmt.Sprintf("https://newsapi.org/v2/everything?q=%s&searchIn=title&from=%s&to=%s&pageSize=%s&apiKey=%s",
+	url := fmt.Sprintf("https://newsapi.org/v2/everything?q=%s&searchIn=title,description,content&from=%s&to=%s&pageSize=%s&apiKey=%s",
 		query,
 		from.Format("01-02-2006"),
 		to.Format("01-02-2006"),

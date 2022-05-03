@@ -13,13 +13,17 @@ import (
 
 func handler(i *irc.IRC, m irc.Message) {
 	//FIXME: if theres no input, bot crashes
-	var q string = ""
+	var q string
 	args := strings.Fields(m.RawArgs)
-	arg := args[0]
-	if len(args) > 1 {
+	print(fmt.Sprintf("length of args %s", len(args)))
+
+	if len(args) > 0 {
 		q = strings.Join(args[1:len(args)], " ")
+	} else {
+		return
 	}
 
+	arg := args[0]
 	if strings.Contains(arg, "!floor") {
 		floor, err := nft.Search(q)
 		if err != nil {
@@ -71,10 +75,10 @@ func handler(i *irc.IRC, m irc.Message) {
 }
 func main() {
 	i := irc.New(&irc.Options{
-		Addr: os.Getenv("SERVER"),
-		Nick: os.Getenv("NICK"),
-		Channels: []string{os.Getenv("CHANNELS")},
-	})
+	Addr: os.Getenv("SERVER"),
+	Nick: os.Getenv("NICK"),
+	Channels: []string{os.Getenv("CHANNELS")},
+})
 	i.Register("PRIVMSG", handler)
 	i.Start()
 }

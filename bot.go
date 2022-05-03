@@ -4,7 +4,7 @@ import (
 	"bot/irc"
 	"bot/news"
 	"bot/nft"
-	"bot/stocks"
+	// "bot/stocks"
 	"bot/openai"
 	"fmt"
 	"os"
@@ -46,16 +46,16 @@ func handler(i *irc.IRC, m irc.Message) {
 		}
 	}
 
-	if strings.Contains(arg, "!s") {
-		stock, err := stocks.Search(q)
-		if err != nil {
-			fmt.Sprint("%s", err)
-		}
+	// if strings.Contains(arg, "!s") {
+	// 	stock, err := stocks.Search(q)
+	// 	if err != nil {
+	// 		fmt.Sprint("%s", err)
+	// 	}
 
-		if len(stock) > 1 {
-			i.Say(m.Target, stock)
-		}
-	}
+	// 	if len(stock) > 1 {
+	// 		i.Say(m.Target, stock)
+	// 	}
+	// }
 
 	if strings.Contains(arg, "!tldr") {
 		summary, err := openai.Summarize(q)

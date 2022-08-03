@@ -120,7 +120,7 @@ func Search(search string) (string, error) {
 
 		result_url := page_url + title
 
-		extract := result_url + " " + wikiPage.Query.Pages[pageId].Extract
+		extract := result_url + " - " + wikiPage.Query.Pages[pageId].Extract
 
 		return extract, nil
 	}

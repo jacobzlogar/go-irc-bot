@@ -68,6 +68,8 @@ func handler(i *irc.IRC, m irc.Message) {
 			fmt.Sprint("%s", err)
 		}
 
+		print(len(summary))
+
 		if len(summary) > 1 {
 			i.Say(m.Target, summary)
 		}

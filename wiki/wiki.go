@@ -3,6 +3,7 @@ package wiki
 import (
 	"fmt"
 	"time"
+	"strings"
 	"net/http"
 	"io/ioutil"
 	"encoding/json"
@@ -58,6 +59,7 @@ type WikiSearch struct {
 
 
 const url = "https://en.wikipedia.org/w/api.php"
+const page_url = "https://en.wikipedia.org/wiki/"
 
 func Search(search string) (string, error) {
 	wikiSearch := WikiSearch{}
@@ -71,8 +73,6 @@ func Search(search string) (string, error) {
 	q.Add("utf8", "1");
 	q.Add("srsearch", search);
 	req.URL.RawQuery = q.Encode()
-
-	// fmt.Println(req.URL.String())
 
 	if err != nil {
 		return "", err
@@ -98,10 +98,12 @@ func Search(search string) (string, error) {
 		q.Add("format", "json")
 		q.Add("action", "query")
 		q.Add("prop", "extracts")
-		q.Add("exintro", "")
-		q.Add("explaintext", "")
+		q.Add("exintro", "1")
+		q.Add("explaintext", "1")
 		q.Add("redirects", "1")
+		q.Add("exsentences", "10")
 		q.Add("pageids", pageId)
+		q.Add("formatversion", "1")
 		req.URL.RawQuery = q.Encode()
 
 		res, err := http.DefaultClient.Do(req)
@@ -114,7 +116,11 @@ func Search(search string) (string, error) {
 
 		json.Unmarshal([]byte(b), &wikiPage)
 
-		extract := wikiPage.Query.Pages[pageId].Extract
+		title := strings.Replace(wikiPage.Query.Pages[pageId].Title, " ", "_", -1)
+
+		result_url := page_url + title
+
+		extract := result_url + " " + wikiPage.Query.Pages[pageId].Extract
 
 		return extract, nil
 	}

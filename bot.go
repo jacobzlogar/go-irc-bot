@@ -5,7 +5,8 @@ import (
 	"bot/news"
 	"bot/nft"
 	// "bot/stocks"
-	"bot/openai"
+	// "bot/openai"
+	"bot/wiki"
 	"fmt"
 	"os"
 	"strings"
@@ -62,11 +63,10 @@ func handler(i *irc.IRC, m irc.Message) {
 	// }
 
 	if strings.Contains(arg, "!tldr") {
-		summary, err := openai.Summarize(q)
+		summary, err := wiki.Search(q)
 		if err != nil {
 			fmt.Sprint("%s", err)
 		}
-		println(summary)
 
 		if len(summary) > 1 {
 			i.Say(m.Target, summary)

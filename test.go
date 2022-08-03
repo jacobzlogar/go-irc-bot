@@ -4,7 +4,7 @@ import (
 	// "bot/news"
 	// "bot/nft"
 	// "bot/stocks"
-	"bot/openai"
+	// "bot/openai"
 	"bot/wiki"
 	"fmt"
 )
@@ -17,7 +17,7 @@ func main() {
 }
 
 func test_wiki() {
-	res, err := wiki.Search("dyson spheres")
+	res, err := wiki.Search("bolsonaro")
 	if err != nil {
 		fmt.Printf("error %s", err)
 	}
@@ -25,13 +25,13 @@ func test_wiki() {
 	// println(fmt.Sprintf("%", res.Query.Search[0].Pageid))
 }
 
-func test_openai() {
-	res, err := openai.Summarize("dyson spheres")
-	if err != nil {
-		fmt.Printf("error %s", err)
-	}
-	print(res)
-}
+// func test_openai() {
+// 	res, err := openai.Summarize("dyson spheres")
+// 	if err != nil {
+// 		fmt.Printf("error %s", err)
+// 	}
+// 	print(res)
+// }
 
 // func test_news() {
 // 	res, err := news.Search("the president of the united states of america")
